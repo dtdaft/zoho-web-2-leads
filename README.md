@@ -5,7 +5,7 @@ Simple PHP script to insert a new Leads record in Zoho CRM using API v1
 It returns a blank gif (perfect for your email campains)
 
 How to use it:
-yourserver/lead.php?
+yourserver/insert.php?
 &company=COMPANY
 &ln=LASTNAME
 &fn=FIRSTNAME
