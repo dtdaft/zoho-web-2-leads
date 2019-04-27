@@ -27,7 +27,10 @@ $Street= $_GET['street'];
 $State= $_GET['state']; 
 $Zip= $_GET['zip']; 
 $Country= $_GET['country']; 
-$Description= $_GET['description']; 
+$Description= $_GET['description'];
+$Rating= $_GET['rating'];
+$SEmail= $_GET['semail'];
+$Title= $_GET['title'];
 
 ignore_user_abort(true);
 
@@ -74,6 +77,9 @@ $xml = "
         <FL val=\"Zip Code\">". $Zip ."</FL>
         <FL val=\"Country\">". $Country ."</FL>
         <FL val=\"Description\">". $Description ."</FL>
+        <FL val=\"Rating\">". $Rating ."</FL>
+        <FL val=\"Secondary Email\">".$SEmail."</FL>
+        <FL val=\"Title\">".$Title."</FL>
         
         </row>
     </Leads>
@@ -102,7 +108,7 @@ $result = insert($auth,$xml);
 function insert($auth,$xml)
 {
     $curl_url = "https://crm.zoho.com/crm/private/xml/Leads/insertRecords";
-    $curl_post_fields = "authtoken=". $auth ."&wfTrigger=true&duplicateCheck=1&scope=crmapi&xmlData=". $xml ."";
+    $curl_post_fields = "authtoken=". $auth ."&wfTrigger=false&duplicateCheck=1&scope=crmapi&xmlData=". $xml ."";
     $ch = curl_init();
     curl_setopt($ch,CURLOPT_URL, $curl_url);
     curl_setopt($ch,CURLOPT_FOLLOWLOCATION, true);
